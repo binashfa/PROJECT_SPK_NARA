@@ -1,375 +1,225 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 
 <head>
     <meta charset="UTF-8">
-    <title>Detail Kelas</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Kelas - {{ $kelas->nama_kelas }}</title>
 
+    <!-- Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
-<body class="bg-[#f6f7fb] min-h-screen">
+<body class="bg-gradient-to-b from-white via-[#fdfafa] to-[#faf6f6] min-h-screen antialiased">
 
     <!-- NAVBAR -->
     @include('siswa.navbar')
 
-    <!-- MAIN -->
-    <div class="p-6">
+    <!-- CONTAINER -->
+    <main class="max-w-7xl mx-auto px-6 pt-[40px] pb-16">
 
-        <!-- HEADER -->
-        <div
-            class="bg-gradient-to-r from-purple-600 to-violet-700 rounded-[35px] p-8 text-white mb-8 relative overflow-hidden">
+        <!-- BACK BUTTON -->
+        <div class="mb-6">
+            <a href="{{ url()->previous() }}" 
+               class="inline-flex items-center gap-2 text-sm font-medium text-[#105666] bg-white px-4 py-2 rounded-xl shadow-sm border border-gray-100 transition hover:shadow-md hover:bg-[#f9fdf8]">
+                <i class="fa-solid fa-arrow-left"></i>
+                Kembali
+            </a>
+        </div>
 
-            <div class="relative z-10">
+        <!-- HEADER HERO -->
+        <header class="mb-8">
+            <div class="w-full rounded-3xl px-10 py-8 flex flex-col md:flex-row items-center justify-between bg-gradient-to-r from-[#F7F4D5] via-[#f3f0d0] to-[#F7F4D5] border border-[#ece8c9] shadow-sm relative overflow-hidden">
+                
+                <!-- BACKGROUND DECORATION -->
+                <div class="absolute -top-16 -left-16 w-40 h-40 bg-[#105666]/10 blur-3xl rounded-full"></div>
+                <div class="absolute -bottom-16 -right-16 w-40 h-40 bg-[#D3968C]/10 blur-3xl rounded-full"></div>
 
-                <div class="flex items-center gap-5">
-
-                    <!-- ICON -->
-                    <div
-                        class="w-20 h-20 rounded-3xl bg-white/20 backdrop-blur-xl flex items-center justify-center text-3xl">
-
+                <!-- CONTENT LEFT -->
+                <div class="flex flex-col md:flex-row items-center gap-6 relative z-10 text-center md:text-left">
+                    <!-- ICON BOX -->
+                    <div class="w-20 h-20 rounded-2xl bg-white shadow-sm flex items-center justify-center text-3xl text-[#105666]">
                         <i class="fa-solid fa-book-open-reader"></i>
-
                     </div>
 
-                    <!-- INFO -->
+                    <!-- CLASS INFO -->
                     <div>
-
-                        <h1 class="text-4xl font-bold mb-2">
-
+                        <h1 class="text-3xl md:text-4xl font-bold text-[#105666] mb-2 leading-tight">
                             {{ $kelas->nama_kelas }}
-
                         </h1>
-
-                        <div class="flex items-center gap-5 text-purple-100">
-
-                            <p>
-                                <i class="fa-solid fa-layer-group mr-2"></i>
+                        <div class="flex flex-wrap justify-center md:justify-start items-center gap-5 text-gray-600 text-sm font-medium">
+                            <span class="flex items-center gap-2">
+                                <i class="fa-solid fa-layer-group text-[#839958]"></i> 
                                 Tingkat {{ $kelas->tingkat }}
-                            </p>
-
-                            <p>
-                                <i class="fa-solid fa-school mr-2"></i>
-                                {{ $kelas->ruangan }}
-                            </p>
-
-                            <p>
-                                <i class="fa-solid fa-clock mr-2"></i>
-
-                                {{ \Carbon\Carbon::parse($kelas->start_time)->format('H:i') }}
-                                -
-                                {{ \Carbon\Carbon::parse($kelas->end_time)->format('H:i') }}
-
-                            </p>
-
+                            </span>
+                            <span class="flex items-center gap-2">
+                                <i class="fa-solid fa-school text-[#D3968C]"></i> 
+                                {{ $kelas->ruangan ?? '-' }}
+                            </span>
+                            <span class="flex items-center gap-2">
+                                <i class="fa-solid fa-clock text-[#105666]"></i>
+                                {{ \Carbon\Carbon::parse($kelas->start_time)->format('H:i') }} - {{ \Carbon\Carbon::parse($kelas->end_time)->format('H:i') }}
+                            </span>
                         </div>
-
                     </div>
-
                 </div>
-
             </div>
+        </header>
 
-            <!-- BLUR -->
-            <div
-                class="absolute -top-20 -right-20 w-72 h-72 bg-white/10 rounded-full blur-3xl">
-            </div>
+        <!-- MAIN CONTENT GRID -->
+        <div class="grid grid-cols-1 xl:grid-cols-3 gap-8">
 
-        </div>
-
-        <!-- GRID -->
-        <div class="grid grid-cols-1 xl:grid-cols-3 gap-6">
-
-            <!-- LEFT -->
+            <!-- LEFT COLUMN: MATERI -->
             <div class="xl:col-span-2 space-y-6">
+                <section class="bg-white rounded-[32px] p-8 shadow-sm border border-gray-100 relative overflow-hidden">
+                    
+                    <!-- DECORATION -->
+                    <div class="absolute -top-16 -left-16 w-32 h-32 bg-[#105666]/10 blur-3xl rounded-full"></div>
+                    <div class="absolute -bottom-16 -right-16 w-32 h-32 bg-[#D3968C]/10 blur-3xl rounded-full"></div>
 
-                <!-- MATERI -->
-                <section class="bg-white rounded-[30px] p-6 shadow-sm border border-gray-100">
-
-                    <div class="flex items-center justify-between mb-6">
-
+                    <!-- SECTION HEADER -->
+                    <div class="flex items-center justify-between mb-8 relative z-10">
                         <div>
-
-                            <h2 class="text-2xl font-bold text-gray-800">
-                                Materi Pembelajaran
-                            </h2>
-
-                            <p class="text-sm text-gray-400 mt-1">
-                                Materi yang telah diberikan guru
-                            </p>
-
+                            <h2 class="text-2xl font-bold text-[#105666]">Materi Pembelajaran</h2>
+                            <p class="text-sm text-gray-500 mt-1">Materi yang telah diberikan guru</p>
                         </div>
-
-                        <div
-                            class="w-14 h-14 rounded-2xl bg-purple-100 flex items-center justify-center text-purple-600">
-
-                            <i class="fa-solid fa-book"></i>
-
+                        <div class="w-14 h-14 rounded-2xl bg-[#F7F4D5] flex items-center justify-center text-[#105666] shadow-sm">
+                            <i class="fa-solid fa-book text-xl"></i>
                         </div>
-
                     </div>
 
-                    <!-- LIST -->
-                    <div class="space-y-4">
-
+                    <!-- MATERI LIST -->
+                    <div class="space-y-4 relative z-10">
                         @forelse($materis as $materi)
+                        <a href="{{ asset('storage/materi/'.$materi->file) }}" target="_blank"
+                           class="group block relative border border-gray-100 rounded-2xl p-6 bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:border-[#D3968C]/40 hover:bg-[#fffafa] overflow-hidden">
+                            
+                            <!-- TOP ACCENT -->
+                            <div class="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-[#105666] via-[#839958] to-[#D3968C]"></div>
 
-                        <a href="{{ asset('storage/materi/'.$materi->file) }}"
-                            target="_blank"
-                            class="block border border-gray-100 rounded-2xl p-5 hover:bg-purple-50 hover:border-purple-200 transition">
-
-                            <div class="flex items-start justify-between gap-4">
-
-                                <div>
-
-                                    <h3 class="text-lg font-bold text-gray-800 mb-2">
-
+                            <div class="flex items-start justify-between gap-4 relative z-10">
+                                <div class="flex-1">
+                                    <h3 class="text-lg font-bold text-gray-800 mb-2 transition group-hover:text-[#105666]">
                                         {{ $materi->judul }}
-
                                     </h3>
-
-                                    <p class="text-sm text-gray-500 leading-relaxed">
-
+                                    <p class="text-sm text-gray-500 leading-relaxed line-clamp-2">
                                         {{ $materi->deskripsi }}
-
                                     </p>
-
                                 </div>
 
-                                <!-- FILE -->
-                                @if($materi->file)
-
-                                <div
-                                    class="bg-purple-100 text-purple-600 px-4 py-2 rounded-xl text-sm font-medium">
-
-                                    <i class="fa-solid fa-file-pdf mr-2"></i>
-                                    Buka File
-
+                                <!-- INTERACTIVE INDICATOR -->
+                                <div class="flex items-center">
+                                    <div class="relative w-[120px] h-8 flex items-center justify-end">
+                                        <div class="absolute right-0 transition-all duration-300 group-hover:translate-x-10 group-hover:opacity-0 text-[#105666]">
+                                            <i class="fa-solid fa-arrow-right"></i>
+                                        </div>
+                                        <div class="absolute right-0 text-sm font-semibold text-[#105666] translate-x-10 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100 whitespace-nowrap">
+                                            Lihat Detail
+                                        </div>
+                                    </div>
                                 </div>
-
-                                @endif
-
                             </div>
-
                         </a>
-
                         @empty
-
-                        <div class="text-center py-10 text-gray-400">
-
-                            Belum ada materi
-
+                        <div class="text-center py-16 text-gray-400">
+                            <i class="fa-regular fa-folder-open text-4xl mb-3 block"></i>
+                            <p class="font-medium">Belum ada materi tersedia</p>
                         </div>
-
                         @endforelse
-
                     </div>
-
                 </section>
-
-
-
             </div>
 
-            <!-- RIGHT -->
+            <!-- RIGHT COLUMN: NILAI & ABSENSI -->
             <div class="space-y-6">
-
-                <!-- NILAI -->
-                <section class="bg-white rounded-[30px] p-6 shadow-sm border border-gray-100">
-
-                    <div class="flex items-center justify-between mb-6">
-
-                        <div>
-
-                            <h2 class="text-2xl font-bold text-gray-800">
-                                Nilai
-                            </h2>
-
-                            <p class="text-sm text-gray-400 mt-1">
-                                Hasil pembelajaran
-                            </p>
-
-                        </div>
-
-                        <div
-                            class="w-14 h-14 rounded-2xl bg-green-100 flex items-center justify-center text-green-600">
-
-                            <i class="fa-solid fa-chart-line"></i>
-
-                        </div>
-
+                
+                <!-- SECTION: NILAI -->
+                <section class="bg-white rounded-[32px] p-8 shadow-sm border border-gray-100 relative overflow-hidden">
+                    <div class="absolute -top-16 -right-16 w-32 h-32 bg-[#839958]/10 blur-3xl rounded-full"></div>
+                    
+                    <div class="mb-6 relative z-10">
+                        <h2 class="text-2xl font-bold text-[#105666]">Nilai</h2>
+                        <p class="text-sm text-gray-500 mt-1">Hasil pembelajaran</p>
                     </div>
 
-                    <!-- LIST -->
-                    <div class="space-y-4">
-
+                    <div class="space-y-4 relative z-10">
                         @forelse($nilais as $nilai)
-
-                        <div
-                            class="border border-gray-100 rounded-2xl p-5 hover:bg-green-50 transition">
-
-                            <div class="flex items-center justify-between mb-3">
-
-                                <h3 class="font-bold text-gray-800">
-
-                                    {{ $nilai->judul }}
-
-                                </h3>
-
-                                <div
-                                    class="w-12 h-12 rounded-2xl bg-green-100 flex items-center justify-center font-bold text-green-600">
-
-                                    {{ $nilai->nilai }}
-
+                        <div class="group relative border border-gray-100 rounded-2xl p-5 bg-white transition-all duration-300 hover:shadow-md hover:border-[#839958]/40 hover:bg-[#f9fdf8] overflow-hidden">
+                            <div class="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-[#105666] via-[#839958] to-[#D3968C]"></div>
+                            
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="font-bold text-gray-800 leading-tight">{{ $nilai->judul }}</p>
+                                    <p class="text-xs text-gray-400 mt-1">{{ $nilai->keterangan }}</p>
                                 </div>
-
+                                <div class="w-12 h-12 rounded-xl bg-[#eef6f6] flex items-center justify-center font-bold text-[#105666] transition group-hover:bg-[#105666] group-hover:text-white">
+                                    {{ $nilai->nilai }}
+                                </div>
                             </div>
-
-                            <p class="text-sm text-gray-500">
-
-                                {{ $nilai->keterangan }}
-
-                            </p>
-
                         </div>
-
                         @empty
-
-                        <div class="text-center py-10 text-gray-400">
-
-                            Belum ada nilai
-
+                        <div class="text-center py-8 text-gray-400">
+                            <p class="text-sm italic text-gray-400">Belum ada nilai</p>
                         </div>
-
                         @endforelse
-
                     </div>
-
                 </section>
 
-                <!-- REKAP ABSEN -->
-                <section class="bg-white rounded-[30px] p-6 shadow-sm border border-gray-100">
-
-                    <div class="mb-6">
-
-                        <h2 class="text-2xl font-bold text-gray-800">
-                            Rekap Absensi
-                        </h2>
-
-                        <p class="text-sm text-gray-400 mt-1">
-                            Riwayat kehadiran kelas ini
-                        </p>
-
+                <!-- SECTION: ABSENSI -->
+                <section class="bg-white rounded-[32px] p-8 shadow-sm border border-gray-100 relative overflow-hidden">
+                    <div class="absolute -bottom-16 -right-16 w-32 h-32 bg-[#D3968C]/10 blur-3xl rounded-full"></div>
+                    
+                    <div class="mb-6 relative z-10">
+                        <h2 class="text-2xl font-bold text-[#105666]">Rekap Absensi</h2>
+                        <p class="text-sm text-gray-500 mt-1">Riwayat kehadiran</p>
                     </div>
 
-                    <div class="overflow-x-auto">
-
+                    <div class="overflow-x-auto relative z-10">
                         <table class="w-full text-sm">
-
                             <thead>
-
                                 <tr class="border-b text-gray-400">
-
-                                    <th class="pb-4 text-left font-medium">
-                                        Tanggal
-                                    </th>
-
-                                    <th class="pb-4 text-left font-medium">
-                                        Jam
-                                    </th>
-
-                                    <th class="pb-4 text-left font-medium">
-                                        Status
-                                    </th>
-
+                                    <th class="pb-4 text-left font-semibold uppercase text-[10px] tracking-wider">Tanggal</th>
+                                    <th class="pb-4 text-left font-semibold uppercase text-[10px] tracking-wider">Jam</th>
+                                    <th class="pb-4 text-left font-semibold uppercase text-[10px] tracking-wider">Status</th>
                                 </tr>
-
                             </thead>
-
                             <tbody class="text-gray-700">
-
                                 @forelse($absensis as $absen)
-
-                                <tr class="border-b hover:bg-gray-50">
-
+                                <tr class="border-b border-gray-50 last:border-0 hover:bg-gray-50/50 transition-colors">
+                                    <td class="py-4 font-medium">{{ $absen->created_at->translatedFormat('d M Y') }}</td>
+                                    <td class="py-4 text-gray-500">{{ $absen->created_at->format('H:i') }}</td>
                                     <td class="py-4">
-
-                                        {{ $absen->created_at->translatedFormat('d F Y') }}
-
-                                    </td>
-
-                                    <td>
-
-                                        {{ $absen->created_at->format('H:i') }}
-
-                                    </td>
-
-                                    <td>
-
                                         @if($absen->status == 'hadir')
-
-                                        <span
-                                            class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-xs font-semibold">
-
-                                            Hadir
-
+                                        <span class="inline-flex items-center gap-1.5 bg-[#eef6f6] text-[#105666] px-3 py-1 rounded-full text-xs font-bold uppercase tracking-tighter">
+                                            <i class="fa-solid fa-circle-check text-[#839958]"></i> Hadir
                                         </span>
-
                                         @elseif($absen->status == 'izin')
-
-                                        <span
-                                            class="bg-yellow-100 text-yellow-600 px-3 py-1 rounded-full text-xs font-semibold">
-
-                                            Izin
-
+                                        <span class="inline-flex items-center gap-1.5 bg-[#fff4e5] text-[#f59e0b] px-3 py-1 rounded-full text-xs font-bold uppercase tracking-tighter">
+                                            <i class="fa-solid fa-circle-exclamation"></i> Izin
                                         </span>
-
                                         @else
-
-                                        <span
-                                            class="bg-red-100 text-red-600 px-3 py-1 rounded-full text-xs font-semibold">
-
-                                            Alpha
-
+                                        <span class="inline-flex items-center gap-1.5 bg-[#fff1f1] text-[#D3968C] px-3 py-1 rounded-full text-xs font-bold uppercase tracking-tighter">
+                                            <i class="fa-solid fa-circle-xmark"></i> Alpha
                                         </span>
-
                                         @endif
-
                                     </td>
-
                                 </tr>
-
                                 @empty
-
                                 <tr>
-
-                                    <td colspan="3"
-                                        class="text-center py-6 text-gray-400">
-
-                                        Belum ada absensi
-
-                                    </td>
-
+                                    <td colspan="3" class="text-center py-10 text-gray-400 italic">Data kosong</td>
                                 </tr>
-
                                 @endforelse
-
                             </tbody>
-
                         </table>
-
                     </div>
-
                 </section>
 
             </div>
-
         </div>
-
-    </div>
+    </main>
 
 </body>
 

@@ -4,13 +4,15 @@
     <!-- BUTTON -->
     <button
         onclick="toggleNotif(event)"
-        class="relative w-11 h-11 rounded-xl bg-purple-800 hover:bg-purple-700 flex items-center justify-center transition">
+        class="relative w-10 h-10 rounded-full flex items-center justify-center transition
+        hover:bg-[#105666] hover:text-white text-[#105666]">
 
         <i class="fa-solid fa-bell"></i>
 
         <!-- BADGE -->
         <span
-            class="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] w-5 h-5 rounded-full flex items-center justify-center font-bold">
+            class="absolute -top-1 -right-1 text-white text-[10px] w-5 h-5 rounded-full flex items-center justify-center font-bold"
+            style="background-color:#D3968C;">
 
             3
 
@@ -20,127 +22,97 @@
 
     <!-- MODAL -->
     <div id="notifModal"
-        class="hidden absolute right-0 mt-4 w-[380px] bg-white rounded-3xl shadow-2xl border border-gray-100 overflow-hidden z-50">
+        class="hidden absolute right-0 mt-4 w-[340px] rounded-2xl shadow-xl overflow-hidden z-50 border"
+        style="background-color:white;">
 
         <!-- HEADER -->
-        <div class="p-5 border-b border-gray-100 flex items-center justify-between">
+        <div class="p-4 flex items-center justify-between border-b">
 
             <div>
-
-                <h2 class="text-lg font-bold text-gray-800">
+                <h2 class="text-sm font-bold" style="color:#105666;">
                     Notifications
                 </h2>
 
-                <p class="text-xs text-gray-400 mt-1">
-                    Notifikasi terbaru kamu
+                <p class="text-xs text-gray-400">
+                    Update terbaru
                 </p>
-
             </div>
 
-            <div
-                class="w-10 h-10 rounded-2xl bg-purple-100 text-purple-600 flex items-center justify-center">
-
-                <i class="fa-solid fa-bell"></i>
-
-            </div>
+            <i class="fa-solid fa-bell text-[#105666]"></i>
 
         </div>
 
         <!-- LIST -->
-        <div class="max-h-[400px] overflow-y-auto">
+        <div class="max-h-[300px] overflow-y-auto">
 
             <!-- ITEM -->
-            <div class="p-5 border-b border-gray-100 hover:bg-gray-50 transition">
+            <div class="p-4 flex gap-3 hover:bg-gray-50 transition">
 
-                <div class="flex items-start gap-4">
+                <div class="w-9 h-9 rounded-full flex items-center justify-center"
+                     style="background-color:#105666; color:white;">
+                    <i class="fa-solid fa-folder-open text-xs"></i>
+                </div>
 
-                    <div
-                        class="w-12 h-12 rounded-2xl bg-red-100 text-red-500 flex items-center justify-center shrink-0">
+                <div>
+                    <p class="text-sm font-semibold text-gray-800">
+                        Deadline Tugas
+                    </p>
 
-                        <i class="fa-solid fa-folder-open"></i>
+                    <p class="text-xs text-gray-500">
+                        Tugas UI/UX berakhir besok
+                    </p>
 
-                    </div>
-
-                    <div>
-
-                        <h3 class="font-semibold text-gray-800 mb-1">
-                            Deadline Tugas
-                        </h3>
-
-                        <p class="text-sm text-gray-500 leading-relaxed">
-                            Tugas UI/UX akan berakhir besok.
-                        </p>
-
-                        <p class="text-xs text-gray-400 mt-2">
-                            2 menit lalu
-                        </p>
-
-                    </div>
-
+                    <p class="text-[10px] mt-1 text-gray-400">
+                        2 menit lalu
+                    </p>
                 </div>
 
             </div>
 
             <!-- ITEM -->
-            <div class="p-5 border-b border-gray-100 hover:bg-gray-50 transition">
+            <div class="p-4 flex gap-3 hover:bg-gray-50 transition">
 
-                <div class="flex items-start gap-4">
+                <div class="w-9 h-9 rounded-full flex items-center justify-center"
+                     style="background-color:#839958; color:white;">
+                    <i class="fa-solid fa-check text-xs"></i>
+                </div>
 
-                    <div
-                        class="w-12 h-12 rounded-2xl bg-green-100 text-green-500 flex items-center justify-center shrink-0">
+                <div>
+                    <p class="text-sm font-semibold text-gray-800">
+                        Absensi berhasil
+                    </p>
 
-                        <i class="fa-solid fa-clipboard-check"></i>
+                    <p class="text-xs text-gray-500">
+                        Kehadiran sudah tercatat
+                    </p>
 
-                    </div>
-
-                    <div>
-
-                        <h3 class="font-semibold text-gray-800 mb-1">
-                            Absensi Berhasil
-                        </h3>
-
-                        <p class="text-sm text-gray-500 leading-relaxed">
-                            Absensi hari ini berhasil direkam.
-                        </p>
-
-                        <p class="text-xs text-gray-400 mt-2">
-                            1 jam lalu
-                        </p>
-
-                    </div>
-
+                    <p class="text-[10px] mt-1 text-gray-400">
+                        1 jam lalu
+                    </p>
                 </div>
 
             </div>
 
             <!-- ITEM -->
-            <div class="p-5 hover:bg-gray-50 transition">
+            <div class="p-4 flex gap-3 hover:bg-gray-50 transition">
 
-                <div class="flex items-start gap-4">
+                <div class="w-9 h-9 rounded-full flex items-center justify-center"
+                     style="background-color:#D3968C; color:white;">
+                    <i class="fa-solid fa-book text-xs"></i>
+                </div>
 
-                    <div
-                        class="w-12 h-12 rounded-2xl bg-purple-100 text-purple-500 flex items-center justify-center shrink-0">
+                <div>
+                    <p class="text-sm font-semibold text-gray-800">
+                        Materi baru
+                    </p>
 
-                        <i class="fa-solid fa-book"></i>
+                    <p class="text-xs text-gray-500">
+                        Guru upload materi terbaru
+                    </p>
 
-                    </div>
-
-                    <div>
-
-                        <h3 class="font-semibold text-gray-800 mb-1">
-                            Materi Baru
-                        </h3>
-
-                        <p class="text-sm text-gray-500 leading-relaxed">
-                            Guru menambahkan materi Matematika baru.
-                        </p>
-
-                        <p class="text-xs text-gray-400 mt-2">
-                            Kemarin
-                        </p>
-
-                    </div>
-
+                    <p class="text-[10px] mt-1 text-gray-400">
+                        Kemarin
+                    </p>
                 </div>
 
             </div>
@@ -148,12 +120,15 @@
         </div>
 
         <!-- FOOTER -->
-        <div class="p-4 border-t border-gray-100 bg-gray-50">
+        <div class="p-3 border-t">
 
             <button
-                class="w-full bg-purple-600 hover:bg-purple-700 text-white py-3 rounded-2xl font-medium transition">
+                class="w-full py-2 rounded-full text-sm font-medium transition text-white"
+                style="background-color:#105666;"
+                onmouseover="this.style.backgroundColor='#839958'"
+                onmouseout="this.style.backgroundColor='#105666'">
 
-                Lihat Semua Notifikasi
+                Lihat Semua
 
             </button>
 
@@ -166,24 +141,15 @@
 <!-- SCRIPT -->
 <script>
     function toggleNotif(event) {
-
         event.stopPropagation();
-
-        document.getElementById('notifModal')
-            .classList.toggle('hidden');
-
+        document.getElementById('notifModal').classList.toggle('hidden');
     }
 
-    // close ketika klik luar
     document.addEventListener('click', function(e) {
-
         const modal = document.getElementById('notifModal');
 
         if (!e.target.closest('#notifModal')) {
-
             modal.classList.add('hidden');
-
         }
-
     });
 </script>
