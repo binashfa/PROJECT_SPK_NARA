@@ -32,39 +32,57 @@
 
         <!-- HEADER HERO -->
         <header class="mb-8">
-            <div class="w-full rounded-3xl px-10 py-8 flex flex-col md:flex-row items-center justify-between bg-gradient-to-r from-[#F7F4D5] via-[#f3f0d0] to-[#F7F4D5] border border-[#ece8c9] shadow-sm relative overflow-hidden">
-                
-                <!-- BACKGROUND DECORATION -->
+            <div class="w-full rounded-3xl px-10 py-8 
+                        flex flex-col md:flex-row items-center justify-between
+                        bg-gradient-to-br from-[#F7F4D5] via-[#f3f0d0] to-[#f9f6e2]
+                        border border-[#ece8c9] relative overflow-hidden">
+
+                <!-- ACCENT LINE -->
+                <div class="absolute top-0 left-0 w-full h-[4px] 
+                            bg-gradient-to-r from-[#105666] via-[#839958] to-[#D3968C]"></div>
+
+                <!-- GLOW -->
                 <div class="absolute -top-16 -left-16 w-40 h-40 bg-[#105666]/10 blur-3xl rounded-full"></div>
                 <div class="absolute -bottom-16 -right-16 w-40 h-40 bg-[#D3968C]/10 blur-3xl rounded-full"></div>
 
-                <!-- CONTENT LEFT -->
+                <!-- LEFT CONTENT -->
                 <div class="flex flex-col md:flex-row items-center gap-6 relative z-10 text-center md:text-left">
-                    <!-- ICON BOX -->
+
+                    <!-- ICON -->
                     <div class="w-20 h-20 rounded-2xl bg-white shadow-sm flex items-center justify-center text-3xl text-[#105666]">
                         <i class="fa-solid fa-book-open-reader"></i>
                     </div>
 
-                    <!-- CLASS INFO -->
+                    <!-- INFO -->
                     <div>
+
                         <h1 class="text-3xl md:text-4xl font-bold text-[#105666] mb-2 leading-tight">
                             {{ $kelas->nama_kelas }}
                         </h1>
+
                         <div class="flex flex-wrap justify-center md:justify-start items-center gap-5 text-gray-600 text-sm font-medium">
+
                             <span class="flex items-center gap-2">
                                 <i class="fa-solid fa-layer-group text-[#839958]"></i> 
                                 Tingkat {{ $kelas->tingkat }}
                             </span>
+
                             <span class="flex items-center gap-2">
                                 <i class="fa-solid fa-school text-[#D3968C]"></i> 
                                 {{ $kelas->ruangan ?? '-' }}
                             </span>
+
                             <span class="flex items-center gap-2">
                                 <i class="fa-solid fa-clock text-[#105666]"></i>
-                                {{ \Carbon\Carbon::parse($kelas->start_time)->format('H:i') }} - {{ \Carbon\Carbon::parse($kelas->end_time)->format('H:i') }}
+                                {{ \Carbon\Carbon::parse($kelas->start_time)->format('H:i') }} 
+                                - 
+                                {{ \Carbon\Carbon::parse($kelas->end_time)->format('H:i') }}
                             </span>
+
                         </div>
+
                     </div>
+
                 </div>
             </div>
         </header>
@@ -135,86 +153,206 @@
 
             <!-- RIGHT COLUMN: NILAI & ABSENSI -->
             <div class="space-y-6">
-                
+
                 <!-- SECTION: NILAI -->
-                <section class="bg-white rounded-[32px] p-8 shadow-sm border border-gray-100 relative overflow-hidden">
+                <section class="bg-white rounded-[32px] p-6 border border-gray-100 relative overflow-hidden">
+
+                    <!-- GLOW -->
                     <div class="absolute -top-16 -right-16 w-32 h-32 bg-[#839958]/10 blur-3xl rounded-full"></div>
-                    
-                    <div class="mb-6 relative z-10">
-                        <h2 class="text-2xl font-bold text-[#105666]">Nilai</h2>
-                        <p class="text-sm text-gray-500 mt-1">Hasil pembelajaran</p>
+
+                    <!-- HEADER -->
+                    <div class="mb-5 flex items-center justify-between relative z-10">
+
+                        <div>
+                            <h2 class="text-xl font-bold text-[#105666]">Nilai</h2>
+                            <p class="text-sm text-gray-500 mt-1">Hasil pembelajaran</p>
+                        </div>
+
+                        <!-- ICON -->
+                        <div class="w-10 h-10 rounded-xl bg-[#eef6f6] flex items-center justify-center text-[#105666]">
+                            <i class="fa-solid fa-chart-line text-sm"></i>
+                        </div>
+
                     </div>
 
-                    <div class="space-y-4 relative z-10">
+                    <!-- LIST -->
+                    <div class="space-y-3 relative z-10">
+
                         @forelse($nilais as $nilai)
-                        <div class="group relative border border-gray-100 rounded-2xl p-5 bg-white transition-all duration-300 hover:shadow-md hover:border-[#839958]/40 hover:bg-[#f9fdf8] overflow-hidden">
-                            <div class="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-[#105666] via-[#839958] to-[#D3968C]"></div>
-                            
-                            <div class="flex items-center justify-between">
+
+                        <div class="group border border-gray-100 rounded-2xl px-4 py-3 
+                                    bg-[#fafafa]
+                                    flex items-center justify-between
+                                    transition-all duration-300
+                                    hover:bg-[#f3f9f7] hover:border-[#839958]/40">
+
+                            <!-- LEFT -->
+                            <div class="flex items-center gap-3">
+
+                                <!-- ICON -->
+                                <div class="w-9 h-9 rounded-lg bg-[#F7F4D5] 
+                                            flex items-center justify-center text-[#105666]
+                                            transition group-hover:bg-[#105666] group-hover:text-white">
+
+                                    <i class="fa-solid fa-file-lines text-xs"></i>
+
+                                </div>
+
+                                <!-- TEXT -->
                                 <div>
-                                    <p class="font-bold text-gray-800 leading-tight">{{ $nilai->judul }}</p>
-                                    <p class="text-xs text-gray-400 mt-1">{{ $nilai->keterangan }}</p>
+                                    <p class="text-sm font-semibold text-gray-800 leading-tight">
+                                        {{ $nilai->judul }}
+                                    </p>
+                                    <p class="text-xs text-gray-400">
+                                        {{ $nilai->keterangan }}
+                                    </p>
                                 </div>
-                                <div class="w-12 h-12 rounded-xl bg-[#eef6f6] flex items-center justify-center font-bold text-[#105666] transition group-hover:bg-[#105666] group-hover:text-white">
-                                    {{ $nilai->nilai }}
-                                </div>
+
                             </div>
+
+                            <!-- NILAI -->
+                            <div class="px-3 py-1 rounded-lg text-sm font-bold
+                                        bg-[#eef6f6] text-[#105666]
+                                        transition-all duration-300
+                                        group-hover:bg-[#105666] group-hover:text-white">
+
+                                {{ $nilai->nilai }}
+
+                            </div>
+
                         </div>
+
                         @empty
+
                         <div class="text-center py-8 text-gray-400">
-                            <p class="text-sm italic text-gray-400">Belum ada nilai</p>
+
+                            <div class="w-14 h-14 mx-auto mb-3 rounded-full bg-[#F7F4D5] flex items-center justify-center">
+                                <i class="fa-solid fa-chart-line text-[#105666]"></i>
+                            </div>
+
+                            <p class="text-sm italic">Belum ada nilai</p>
+
                         </div>
+
                         @endforelse
+
                     </div>
+
                 </section>
 
-                <!-- SECTION: ABSENSI -->
-                <section class="bg-white rounded-[32px] p-8 shadow-sm border border-gray-100 relative overflow-hidden">
+               <!-- SECTION: ABSENSI -->
+                <section class="bg-white rounded-[32px] p-6 border border-gray-100 relative overflow-hidden">
+
+                    <!-- GLOW -->
                     <div class="absolute -bottom-16 -right-16 w-32 h-32 bg-[#D3968C]/10 blur-3xl rounded-full"></div>
-                    
-                    <div class="mb-6 relative z-10">
-                        <h2 class="text-2xl font-bold text-[#105666]">Rekap Absensi</h2>
-                        <p class="text-sm text-gray-500 mt-1">Riwayat kehadiran</p>
+
+                    <!-- HEADER -->
+                    <div class="mb-5 flex items-center justify-between relative z-10">
+
+                        <div>
+                            <h2 class="text-xl font-bold text-[#105666]">Rekap Absensi</h2>
+                            <p class="text-sm text-gray-500 mt-1">Riwayat kehadiran</p>
+                        </div>
+
+                        <!-- ICON -->
+                        <div class="w-10 h-10 rounded-xl bg-[#fff1f1] flex items-center justify-center text-[#D3968C]">
+                            <i class="fa-solid fa-calendar-check text-sm"></i>
+                        </div>
+
                     </div>
 
+                    <!-- TABLE -->
                     <div class="overflow-x-auto relative z-10">
+
                         <table class="w-full text-sm">
+
                             <thead>
                                 <tr class="border-b text-gray-400">
-                                    <th class="pb-4 text-left font-semibold uppercase text-[10px] tracking-wider">Tanggal</th>
-                                    <th class="pb-4 text-left font-semibold uppercase text-[10px] tracking-wider">Jam</th>
-                                    <th class="pb-4 text-left font-semibold uppercase text-[10px] tracking-wider">Status</th>
+                                    <th class="pb-3 text-left text-xs font-semibold uppercase tracking-wide">Tanggal</th>
+                                    <th class="pb-3 text-left text-xs font-semibold uppercase tracking-wide">Jam</th>
+                                    <th class="pb-3 text-left text-xs font-semibold uppercase tracking-wide">Status</th>
                                 </tr>
                             </thead>
+
                             <tbody class="text-gray-700">
+
                                 @forelse($absensis as $absen)
-                                <tr class="border-b border-gray-50 last:border-0 hover:bg-gray-50/50 transition-colors">
-                                    <td class="py-4 font-medium">{{ $absen->created_at->translatedFormat('d M Y') }}</td>
-                                    <td class="py-4 text-gray-500">{{ $absen->created_at->format('H:i') }}</td>
-                                    <td class="py-4">
+
+                                <tr class="border-b border-gray-50 last:border-0 hover:bg-[#fafafa] transition">
+
+                                    <!-- TANGGAL -->
+                                    <td class="py-3 font-medium">
+                                        {{ $absen->created_at->translatedFormat('d M Y') }}
+                                    </td>
+
+                                    <!-- JAM -->
+                                    <td class="py-3 text-gray-500">
+                                        {{ $absen->created_at->format('H:i') }}
+                                    </td>
+
+                                    <!-- STATUS -->
+                                    <td class="py-3">
+
                                         @if($absen->status == 'hadir')
-                                        <span class="inline-flex items-center gap-1.5 bg-[#eef6f6] text-[#105666] px-3 py-1 rounded-full text-xs font-bold uppercase tracking-tighter">
-                                            <i class="fa-solid fa-circle-check text-[#839958]"></i> Hadir
+
+                                        <span class="inline-flex items-center gap-1.5 
+                                                    bg-[#eef6f6] text-[#105666] 
+                                                    px-3 py-1 rounded-full text-xs font-semibold">
+
+                                            <i class="fa-solid fa-circle-check text-[#839958]"></i>
+                                            Hadir
+
                                         </span>
+
                                         @elseif($absen->status == 'izin')
-                                        <span class="inline-flex items-center gap-1.5 bg-[#fff4e5] text-[#f59e0b] px-3 py-1 rounded-full text-xs font-bold uppercase tracking-tighter">
-                                            <i class="fa-solid fa-circle-exclamation"></i> Izin
+
+                                        <span class="inline-flex items-center gap-1.5 
+                                                    bg-[#fff4e5] text-[#f59e0b] 
+                                                    px-3 py-1 rounded-full text-xs font-semibold">
+
+                                            <i class="fa-solid fa-circle-exclamation"></i>
+                                            Izin
+
                                         </span>
+
                                         @else
-                                        <span class="inline-flex items-center gap-1.5 bg-[#fff1f1] text-[#D3968C] px-3 py-1 rounded-full text-xs font-bold uppercase tracking-tighter">
-                                            <i class="fa-solid fa-circle-xmark"></i> Alpha
+
+                                        <span class="inline-flex items-center gap-1.5 
+                                                    bg-[#fff1f1] text-[#D3968C] 
+                                                    px-3 py-1 rounded-full text-xs font-semibold">
+
+                                            <i class="fa-solid fa-circle-xmark"></i>
+                                            Alpha
+
                                         </span>
+
                                         @endif
+
+                                    </td>
+
+                                </tr>
+
+                                @empty
+
+                                <tr>
+                                    <td colspan="3" class="text-center py-8 text-gray-400">
+
+                                        <div class="flex flex-col items-center gap-2">
+                                            <i class="fa-regular fa-calendar-xmark text-xl text-gray-300"></i>
+                                            <p class="text-sm italic">Belum ada absensi</p>
+                                        </div>
+
                                     </td>
                                 </tr>
-                                @empty
-                                <tr>
-                                    <td colspan="3" class="text-center py-10 text-gray-400 italic">Data kosong</td>
-                                </tr>
+
                                 @endforelse
+
                             </tbody>
+
                         </table>
+
                     </div>
+
                 </section>
 
             </div>
