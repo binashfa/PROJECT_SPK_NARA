@@ -199,8 +199,15 @@
                     </p>
                 </div>
 
-                <button onclick="closeModal()" class="mt-6 w-full py-3 rounded-xl font-semibold text-white bg-gradient-to-r from-[#839958] to-[#105666] hover:from-[#105666] hover:to-[#839958] transition-all duration-300 hover:-translate-y-[2px] hover:shadow-md">
+                <button onclick="closeModal()"
+                    class="mt-6 w-full px-8 py-3.5 rounded-xl font-semibold text-white
+                        bg-gradient-to-r from-[#105666] to-[#0d4b59]
+                        hover:from-[#0d4b59] hover:to-[#105666]
+                        transition-all duration-300
+                        hover:-translate-y-[2px] hover:shadow-md">
+
                     Tutup
+
                 </button>
 
             </div>
