@@ -6,7 +6,7 @@ use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\KriteriaController;
 use App\Http\Controllers\NilaiController;
 use App\Http\Controllers\PrometheeController;
-use App\Http\Controllers\TugasController;
+use App\Http\Controllers\GuruController;
 use App\Http\Controllers\PengumpulanController;
 use App\Http\Controllers\RequestAkunController;
 use App\Http\Controllers\DashboardController;
@@ -49,14 +49,23 @@ Route::middleware(['auth', 'role:superadmin'])->group(function () {
 // ================== GURU ==================
 Route::middleware(['auth', 'role:guru'])->group(function () {
 
-    Route::get('/guru-dashboard', [TugasController::class, 'dashboardGuru']);
+    Route::get('/guru-dashboard', [GuruController::class, 'dashboardGuru']);
 
-    Route::get('/tugas', [TugasController::class, 'index']);
-    Route::get('/tugas/create', [TugasController::class, 'create']);
-    Route::post('/tugas', [TugasController::class, 'store']);
+    Route::get('/guru/kelas', [GuruController::class, 'kelas']);
+    Route::get('/guru/kelas/{id}', [GuruController::class, 'detailKelas']);
 
-    Route::get('/pengumpulan', [PengumpulanController::class, 'index']);
-    Route::post('/pengumpulan/{id}/nilai', [PengumpulanController::class, 'beriNilai']);
+    Route::get('/guru/absensi/{id}', [GuruController::class, 'absensi']);
+    Route::post('/guru/absensi/store', [GuruController::class, 'storeAbsensi']);
+    Route::get('/guru/kelas/{id}/absensi', [GuruController::class, 'absensiKelas']);
+
+    Route::get('/guru/materi/{id}', [GuruController::class, 'materi']);
+    Route::post('/guru/materi/store', [GuruController::class, 'storeMateri']);
+    Route::get('/guru/materi/delete/{id}', [GuruController::class, 'deleteMateri']);
+
+    Route::get('/guru/tugas/{id}', [GuruController::class, 'tugas']);
+    Route::post('/guru/tugas/store', [GuruController::class, 'storeTugas']);
+    Route::post('/guru/nilai/store', [GuruController::class, 'simpanNilai']);
+    Route::get('/guru/tugas/detail/{id}', [GuruController::class, 'detailTugas']);
 });
 
 

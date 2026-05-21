@@ -29,7 +29,7 @@
 
             <!-- KELAS -->
             <li>
-                <a href="/kelas"
+                <a href="/guru/kelas"
                     class="flex items-center gap-3 hover:bg-purple-700 p-3 rounded-xl transition">
 
                     <i class="fa-solid fa-book-open"></i>

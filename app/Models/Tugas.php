@@ -9,23 +9,24 @@ class Tugas extends Model
     protected $table = 'tugas';
 
     protected $fillable = [
+
         'kelas_id',
         'judul',
         'deskripsi',
         'deadline',
-        'matkul',
         'status',
         'file_tugas'
     ];
 
-    // RELASI KE PENGUMPULAN
-    public function pengumpulan()
+    // RELASI KE KELAS
+    public function kelas()
     {
         return $this->belongsTo(Kelas::class);
     }
 
-    public function kelas()
+    // RELASI PENGUMPULAN
+    public function pengumpulan()
     {
-        return $this->belongsTo(Kelas::class);
+        return $this->hasMany(Pengumpulan::class);
     }
 }
